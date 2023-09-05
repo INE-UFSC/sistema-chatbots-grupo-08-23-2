@@ -5,15 +5,7 @@ class BotFalador(Bot):
     def __init__(self, nome, comandos):
         self.__nome = nome
         self.__comandos = comandos
-        # self.comandos = {"O que é a vida?": "É uma maravilha!", "Comando 02": "Resposta 02", "Comando 03": "Resposta 03"}
         super().__init__(nome, comandos)
-
-    #nao esquecer o decorator
-    def get_nome(self):
-        return self.__nome
-    
-    def set_nome(self, nome):
-        self.__nome = nome
         
     @property
     def nome(self):
