@@ -15,10 +15,20 @@ class BotFalador(Bot):
     def set_nome(self, nome):
         self.__nome = nome
         
-    def get_comandos(self):
+    @property
+    def nome(self):
+        return self.__nome
+    
+    @nome.setter
+    def nome(self, nome):
+        self.__nome = nome
+        
+    @property
+    def comandos(self):
         return self.__comandos
-
-    def set_comandos(self, comandos):
+    
+    @comandos.setter
+    def comandos(self, comandos):
         self.__comandos = comandos
         
     def apresentacao(self):
@@ -43,7 +53,7 @@ class BotFalador(Bot):
     def mostra_comandos(self):
         cmds_counter = 1
         for cmds in self.comandos.keys():
-            print("{}- {}".format(cmds_counter, cmds_counter))
+            print("{}- {}".format(cmds_counter, cmds))
             cmds_counter += 1            
             
     def executa_comando(self,cmd):
