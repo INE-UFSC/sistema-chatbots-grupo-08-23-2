@@ -21,7 +21,7 @@ class SistemaChatBot:
         self.__bot = bot
     
     def boas_vindas(self):
-        print("Olá, esse é o sistema de chatbots do grupo 8!")
+        print(f"Olá, esse é o sistema de chatbots de {self.__empresa}!")
 
     def mostra_menu(self):
         print("Os chat bots disponíveis no momento são:")
