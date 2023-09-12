@@ -3,11 +3,7 @@ from Bots.Bot import Bot
 class BotFeliz(Bot):
     def __init__(self, nome):
         self.__nome = nome
-        
-        comandos = {1: "Fale uma frase motivadora", 2: "O que te deixa mais feliz?",3: "Como você é feliz?",}
-        
-        self.__comandos = comandos
-        super().__init__(nome)
+        self.__comandos = {1: "Fale uma frase motivadora", 2: "O que te deixa mais feliz?",3: "Como você é feliz?"}
 
     @property
     def nome(self):
@@ -29,10 +25,8 @@ class BotFeliz(Bot):
         print("Olá, meu nome é {} da vida feliz.".format(self.__nome))
  
     def mostra_comandos(self):
-        cmds_counter = 1
-        for cmds in self.comandos.values():
-            print("{}- {}".format(cmds_counter, cmds))
-            cmds_counter += 1   
+        for i, comando in (self.__comandos.items()):
+            print(f"{i} - {comando}")
             
     def frase_motivadora(self):
         print("A vida é uma maravilha")
