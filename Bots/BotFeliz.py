@@ -9,7 +9,7 @@ class BotFeliz(Bot):
                     "3- Como você é feliz?": "Basta querer e pensar positivo sempre!"}
         
         self.__comandos = comandos
-        super().__init__(nome, comandos)
+        super().__init__(nome)
 
     @property
     def nome(self):

@@ -2,6 +2,7 @@ from Bots.Bot import Bot
 class BotNerdola(Bot):
     def __init__(self, nome):
         self.__nome = nome
+        self.__comandos = {1: 'Bom dia!', 2: 'Qual o seu nome?', 3: 'Qual sua idade?', 4: 'Adeus'}
 
     @property
     def nome(self):
@@ -11,12 +12,20 @@ class BotNerdola(Bot):
     def nome(self, nome):
         self.__nome = nome
 
+    @property
+    def comandos(self):
+        return self.__comandos
+    
+    @comandos.setter
+    def comandos(self, comandos):
+        self.__comandos = comandos
+
     def apresentacao(self):
         print(f'Olá, eu sou o {self.__nome} e eu sei matemática!')
 
     def mostra_comandos(self):
-        comandos = '1 - Bom dia!\n2 - Qual o seu nome?\n3 - Qual sua idade?\n4 - Adeus'
-        print(comandos)
+        for i, comando in (self.__comandos.items()):
+            print(f"{i} - {comando}")
 
     def bom_dia(self):
         print('Bom dia, como vai você?')

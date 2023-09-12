@@ -3,6 +3,7 @@ from Bots.Bot import Bot
 class BotZangado(Bot):
     def __init__(self,nome):
         self.__nome = nome
+        self.__comandos = {1: "RECEBER UM BOAS-VINDAS", 2: "SABER ONDE EU MORO", 3: "SABER O MOTIVO DA MINHA EXISTENCIA", 4: "IR EMBORA(POR FAVOR ESCOLHA ESSE)"}
 
     @property
     def nome(self):
@@ -11,12 +12,21 @@ class BotZangado(Bot):
     @nome.setter
     def nome(self, nome):
         self.__nome = nome
+        
+    @property
+    def comandos(self):
+        return self.__comandos
+    
+    @comandos.setter
+    def comandos(self, comandos):
+        self.__comandos = comandos
 
     def apresentacao(self):
         print("OLÁ, EU SOU O BOT ZANGADO, PQ VOCÊ ESTÁ ME INCOMODANDO?")
     
     def mostra_comandos(self):
-        print("ME DIGA O QUE VOCE DESEJA: 1 - RECEBER UM BOAS-VINDAS, 2 - SABER ONDE EU MORO, 3 - SABER O MOTIVO DA MINHA EXISTENCIA, 4 - IR EMBORA(POR FAVOR ESCOLHA ESSE)")
+        for i, comando in (self.__comandos.items()):
+            print(f"{i} - {comando}")
     
     def executa_comando(self,cmd):
         if cmd == 1:
