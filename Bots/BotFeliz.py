@@ -1,8 +1,13 @@
 from Bots.Bot import Bot
 
 class BotFeliz(Bot):
-    def __init__(self, nome, comandos):
+    def __init__(self, nome):
         self.__nome = nome
+        
+        comandos = {"1- Fale uma frase motivadora": "A vida é uma maravilha", 
+                    "2- Qual é o seu nome?": "Meu nome é {} e eu sou muito feliz!".format(self.__nome),
+                    "3- Como você é feliz?": "Basta querer e pensar positivo sempre!"}
+        
         self.__comandos = comandos
         super().__init__(nome, comandos)
 
@@ -23,7 +28,7 @@ class BotFeliz(Bot):
         self.__comandos = comandos
         
     def apresentacao(self):
-        print("Olá, meu nome é BotFeliz da vida feliz.")
+        print("Olá, meu nome é {} da vida feliz.".format(self.__nome))
  
     def mostra_comandos(self):
         cmds_counter = 1
