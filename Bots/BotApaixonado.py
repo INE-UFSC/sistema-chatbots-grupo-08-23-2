@@ -1,9 +1,11 @@
+### bot do grupo 6
+
 from Bots.Bot import Bot
 
 class BotApaixonado(Bot):
 
     def __init__(self, nome):
-        super().__init__(nome)
+        
         comandos_dict = {
             1: 'Qual a coisa mais importante para você?',
             2: 'Que horas são?',
@@ -11,10 +13,10 @@ class BotApaixonado(Bot):
             4: 'Eu já sou comprometido(a)',
             5: 'Até logo',
             }
-        super().comandos = comandos_dict
-
+        super().__init__(nome, comandos_dict) ### utilizamos comandos como parametro
+        
     def apresentacao(self):
-        return f'Oiii, tudo bem? Eu sou o {super().nome}'
+        print(f'Oiii, tudo bem? Eu sou o {super().nome}') ### mudamos para print
         
     def executa_comando(self, cmd):
         match cmd:
