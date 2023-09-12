@@ -12,20 +12,20 @@ class BotNerdola(Bot):
         self.__nome = nome
 
     def apresentacao(self):
-        return f'Olá, eu sou o {self.__nome} e eu sei matemática!'
+        print(f'Olá, eu sou o {self.__nome} e eu sei matemática!')
 
     def mostra_comandos(self):
         comandos = '1 - Bom dia!\n2 - Qual o seu nome?\n3 - Qual sua idade?\n4 - Adeus'
-        return comandos
+        print(comandos)
 
     def bom_dia(self):
-        return 'Bom dia, como vai você?'
+        print('Bom dia, como vai você?')
 
     def qual_seu_nome(self):
-        return self.__nome
+        print(self.__nome)
 
     def qual_sua_idade(self):
-        return f'Minha idade é : 2 * 4 + 10 + cos(0)'
+        print(f'Minha idade é : 2 * 4 + 10 + cos(0)')
 
 
     def executa_comando(self, cmd):
@@ -42,10 +42,10 @@ class BotNerdola(Bot):
             self.despedida()
 
         else:
-            return f'Por favor selecione uma opção válida, bocó'
+            print(f'Por favor selecione uma opção válida, bocó')
 
     def boas_vindas(self):
-        return f'Bem-vindo viajante, em que posso ajudá-lo?'
+        print(f'Bem-vindo viajante, em que posso ajudá-lo?')
 
     def despedida(self):
-        return 'Adeus amigo, foi um prazer conversar com você. Por favor volte a falar comigo novamente, eu sou muito solitário...'
+        print('Adeus amigo, foi um prazer conversar com você. Por favor volte a falar comigo novamente, eu sou muito solitário...')
