@@ -30,7 +30,7 @@ class BotFeliz(Bot):
  
     def mostra_comandos(self):
         cmds_counter = 1
-        for cmds in self.comandos.keys():
+        for cmds in self.comandos.values():
             print("{}- {}".format(cmds_counter, cmds))
             cmds_counter += 1   
             
