@@ -9,8 +9,7 @@ class SistemaChatBot:
             if type(bot) == Bot:
                 self.__lista_bots.append(bot)
         self.__bot = None
-        self.__mensagens_comandos =  ["Bom dia", "Qual o seu nome?", "Quero um conselho", "Adeus"]
-        self.__comandos = ['bom_dia', 'qual_nome', 'conselho', 'adeus'] ### CONFIRMAR COM OS OUTROS DEPOIS   
+        self.__comandos_temp = []
     
     @property
     def bot(self):
@@ -19,6 +18,7 @@ class SistemaChatBot:
     @bot.setter
     def bot(self, bot):
         self.__bot = bot
+        self.__comandos_temp = []
     
     def boas_vindas(self):
         print(f"Olá, esse é o sistema de chatbots de {self.__empresa}!")
@@ -37,14 +37,18 @@ class SistemaChatBot:
         
 
     def mostra_comandos_bot(self):
-        for i, comando in enumerate(self.__mensagens_comandos):
+        for i, comando in enumerate(self.__bot.comandos()):
             print(f"{i+1} - {comando}")
+            self.__comandos_temp.append(comando)
 
     def le_envia_comando(self):
-        comando = int(input("Digite o comando desejado: "))
-        if comando == -1:
-            return False
-        self.__bot.executa_comando(self.__comandos[comando-1]) 
+        while True:
+            comando = int(input("Digite o comando desejado: "))
+            if comando == -1:
+                return False
+            if 1 <= comando <= len(self.__comandos_temp):
+                break
+        self.__bot.executa_comando(self.__comandos_temp[comando-1]) 
         return True
 
     def inicio(self):
