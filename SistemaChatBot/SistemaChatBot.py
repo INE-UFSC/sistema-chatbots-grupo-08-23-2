@@ -2,14 +2,13 @@ from Bots.Bot import Bot
 from Bots.BotZangado import BotZangado
 
 class SistemaChatBot:
-    def __init__(self,nomeEmpresa, lista_bots):
+    def __init__(self, nomeEmpresa, lista_bots):
         self.__empresa = nomeEmpresa
-        self.__lista_bots = lista_bots
+        self.__lista_bots = []
         for bot in lista_bots:
-            if type(bot) == Bot:
+            if isinstance(bot, Bot):
                 self.__lista_bots.append(bot)
         self.__bot = None
-        self.__comandos_temp = []
     
     @property
     def bot(self):
