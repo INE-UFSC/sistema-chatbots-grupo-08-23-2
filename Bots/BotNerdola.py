@@ -13,7 +13,7 @@ class BotNerdola(Bot):
         self.__nome = nome
 
     def apresentacao(self):
-        return f'Olá, eu sou o {self.__nome} e eu sei matemática!'
+        print(f'Olá, eu sou o {self.__nome} e eu sei matemática!')
 
     def mostra_comandos(self):
         comandos = '1 - Bom dia!\n2 - Qual o seu nome?\n3 - Qual sua idade?\n4 - Adeus'
