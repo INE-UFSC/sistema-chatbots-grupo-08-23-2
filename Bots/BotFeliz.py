@@ -34,7 +34,7 @@ class BotFeliz(Bot):
     def como_eh_feliz(self):
         print("Basta querer e pensar positivo sempre!")
         
-    def oq_deixa_mais_feliz():
+    def oq_deixa_mais_feliz(self):
         print("a vidaaaa!")         
             
     def executa_comando(self,cmd):
