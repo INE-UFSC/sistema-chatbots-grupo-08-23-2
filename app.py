@@ -3,6 +3,7 @@ from SistemaChatBot import SistemaChatBot as scb
 from Bots.BotZangado import BotZangado
 from Bots.BotFeliz import BotFeliz
 from Bots.BotNerdola import BotNerdola
+#from Bots.BotApaixonado import BotApaixonado
 
 ###construa a lista de bots disponíveis aqui
 lista_bots = [BotZangado("Zangado"), BotNerdola("Nerdola"), BotFeliz("Feliz")]

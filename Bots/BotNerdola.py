@@ -1,31 +1,12 @@
 from Bots.Bot import Bot
 class BotNerdola(Bot):
     def __init__(self, nome):
-        self.__nome = nome
         self.__comandos = {1: 'Bom dia!', 2: 'Qual o seu nome?', 3: 'Qual sua idade?', 4: 'Adeus'}
-
-    @property
-    def nome(self):
-        return self.__nome
-
-    @nome.setter
-    def nome(self, nome):
+        super().__init__(nome, self.__comandos)
         self.__nome = nome
-
-    @property
-    def comandos(self):
-        return self.__comandos
-    
-    @comandos.setter
-    def comandos(self, comandos):
-        self.__comandos = comandos
 
     def apresentacao(self):
         print(f'Olá, eu sou o {self.__nome} e eu sei matemática!')
-
-    def mostra_comandos(self):
-        for i, comando in (self.__comandos.items()):
-            print(f"{i} - {comando}")
 
     def bom_dia(self):
         print('Bom dia, como vai você?')
