@@ -21,9 +21,10 @@ class SistemaChatBot:
     
     def boas_vindas(self):
         print(f"Olá, esse é o sistema de chatbots de {self.__empresa}!")
+        print()
 
     def mostra_menu(self):
-        print("Os chat bots disponíveis no momento são:")
+        print("Os chat bots disponíveis no momento são:\n")
         for i, bot in enumerate(self.__lista_bots):
             print(f"{i+1} - Bot: {bot.nome} - Mensagem de apresentação: ")
             bot.apresentacao()
@@ -35,10 +36,12 @@ class SistemaChatBot:
             if 1 <= opcao <= len(self.__lista_bots):
                 break
         self.bot = self.__lista_bots[opcao-1]
+        print()
         
 
     def mostra_comandos_bot(self):
         self.__bot.mostra_comandos()
+        print()
 
     def le_envia_comando(self):
         while True:
@@ -48,6 +51,7 @@ class SistemaChatBot:
             if 1 <= comando <= len(self.__bot.comandos):
                 break
         self.__bot.executa_comando(comando) 
+        print()
         return True
 
     def inicio(self):
@@ -59,4 +63,5 @@ class SistemaChatBot:
             comando = self.le_envia_comando()
             if comando == False:
                 break
+        print()
         self.bot.despedida()
