@@ -4,8 +4,8 @@ import pyttsx3
 
 class BotFalador(Bot):
     def __init__(self, nome, comandos):
-        self.__comandos = {1: Comando("Quero um elogio do amigo falante", "Você é uma pessoa adorável."),
-                           2: Comando("Modo papagaio: Repita o que eu digo.", "Test")}
+        self.__comandos = [Comando("Quero um elogio do amigo falante", "Você é uma pessoa adorável."),
+                           Comando("Modo papagaio: Repita o que eu digo.", "Test")]
         super().__init__(nome,self.__comandos)
         self.__comandos = comandos
         motor = pyttsx3.init()
