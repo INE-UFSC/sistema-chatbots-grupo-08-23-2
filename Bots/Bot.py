@@ -24,8 +24,11 @@ class Bot(ABC):
         self.__comandos = comandos
 
     def mostra_comandos(self):
-        for i, comando in (self.comandos.items()):
-            print(f"{i} - {comando}")
+        for i, comando in self.comandos.items():
+            print(f"{i} - {comando.pergunta}")
+            
+        #for i, comando in (self.comandos.items()):
+        #    print(f"{i} - {comando}")
 
     @abstractmethod
     def executa_comando(self,cmd):
