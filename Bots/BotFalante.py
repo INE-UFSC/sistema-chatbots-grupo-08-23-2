@@ -4,8 +4,7 @@ import pyttsx3
 
 class BotFalante(Bot):
     def __init__(self, nome):
-        self.__comandos = [Comando("Quero um elogio do amigo falante gringo", "You are beautiful."),
-                           Comando("Repitindo pronúncias", "I'm Erika")]
+        self.__comandos = [Comando("Repitindo pronúncias", None)]
         super().__init__(nome,self.__comandos)
         motor = pyttsx3.init()
         self.__motor = motor
@@ -28,7 +27,9 @@ class BotFalante(Bot):
             
     def executa_comando(self,cmd):
         print("Eu estou falando, não vou repetir de novo!")
-        self.run_voice(self.comandos[cmd-1].resposta)
+        comando = input("O que quer que eu repita? ")
+        self.run_voice(comando)
+        # self.run_voice(self.comandos[cmd-1].resposta)
 
     def boas_vindas(self):
         print("Seja bem-vindo!")
