@@ -57,6 +57,8 @@ class SistemaChatBot:
         self.boas_vindas()
         self.mostra_menu()
         self.escolhe_bot()
+        self.__bot.boas_vindas()
+        print()
         while True:
             self.mostra_comandos_bot()
             comando = self.le_envia_comando()
