@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 import random as r
+from SistemaChatBot.Comando import Comando
 
 class Bot(ABC):
 
