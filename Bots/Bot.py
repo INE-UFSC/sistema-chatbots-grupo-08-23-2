@@ -25,11 +25,8 @@ class Bot(ABC):
         self.__comandos = comandos
 
     def mostra_comandos(self):
-        for i, comando in self.comandos.items():
+        for i, comando in enumerate(self.comandos, start=1):
             print(f"{i} - {comando.pergunta}")
-            
-        #for i, comando in (self.comandos.items()):
-        #    print(f"{i} - {comando}")
 
     @abstractmethod
     def executa_comando(self,cmd):
@@ -42,3 +39,6 @@ class Bot(ABC):
     @abstractmethod
     def despedida():
         pass
+    
+    def executa_comando(self, cmd):
+        print(self.comandos[cmd-1].resposta)
