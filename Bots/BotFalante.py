@@ -2,16 +2,14 @@ from SistemaChatBot.Comando import Comando
 from Bots.Bot import Bot
 import pyttsx3
 
-class BotFalador(Bot):
-    def __init__(self, nome, comandos):
-        self.__comandos = [Comando("Quero um elogio do amigo falante", "Você é uma pessoa adorável."),
-                           Comando("Modo papagaio: Repita o que eu digo.", "Test")]
+class BotFalante(Bot):
+    def __init__(self, nome):
+        self.__comandos = [Comando("Quero um elogio do amigo falante gringo", "You are beautiful."),
+                           Comando("Repitindo pronúncias", "I'm Erika")]
         super().__init__(nome,self.__comandos)
-        self.__comandos = comandos
         motor = pyttsx3.init()
         self.__motor = motor
         self.__motor.getProperty('voices')
-        super().__init__(nome, comandos)
         
     def config_init(self):   
         self.__motor.setProperty('rate', 125)  
@@ -26,19 +24,14 @@ class BotFalador(Bot):
         self.__motor.stop()
         
     def apresentacao(self):
-        self.run_voice("Olá, meu nome é {}. Eu repito o que você quiser.".format(self.__nome))
- 
-    def mostra_comandos(self):
-        cmds_counter = 1
-        for cmds in self.comandos.keys():
-            print("{}- {}".format(cmds_counter, cmds))
-            cmds_counter += 1            
+        print("Olá, eu sou um bot falante gringo. Eu repito o que você quiser.")        
             
     def executa_comando(self,cmd):
-        self.run_voice(self.comandos[cmd].resposta)
+        print("Eu estou falando, não vou repetir de novo!")
+        self.run_voice(self.comandos[cmd-1].resposta)
 
     def boas_vindas(self):
-        self.run_voice("Seja bem-vindo!")
+        print("Seja bem-vindo!")
 
     def despedida(self):
         self.run_voice("Adeus e tenha uma boa vida!")
