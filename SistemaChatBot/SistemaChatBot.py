@@ -49,7 +49,7 @@ class SistemaChatBot:
                 return False
             if 1 <= comando <= len(self.__bot.comandos):
                 break
-        self.__bot.executa_comando(comando) 
+        self.__bot.executa_comando(comando-1) 
         print()
         return True
 

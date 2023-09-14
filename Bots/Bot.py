@@ -37,4 +37,4 @@ class Bot(ABC):
             print(f"{i} - {comando.pergunta}")
             
     def executa_comando(self, cmd):
-        print(self.comandos[cmd-1].resposta)
+        print(self.comandos[cmd].resposta)
