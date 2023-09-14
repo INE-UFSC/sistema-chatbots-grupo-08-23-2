@@ -14,8 +14,8 @@ class BotZangado(Bot):
     def boas_vindas(self):
         print("SEJA MAL VINDO AO CHATBOT ZANGADO!")
         
-    def executa_comando(self,cmd):
-        print(self.comandos[cmd].resposta)
-        
     def despedida(self):
         print("VAI LOGO, NAO AGUENTO MAIS FICAR AQUI")
+        
+    def executa_comando(self,cmd):
+        print(self.comandos[cmd].resposta)
