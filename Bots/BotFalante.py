@@ -25,11 +25,10 @@ class BotFalante(Bot):
     def apresentacao(self):
         print("Olá, eu sou um bot falante gringo. Eu repito o que você quiser.")        
             
-    def executa_comando(self,cmd):
+    def executa_comando(self):
         print("Eu estou falando, não vou repetir de novo!")
         comando = input("O que quer que eu repita? ")
         self.run_voice(comando)
-        # self.run_voice(self.comandos[cmd-1].resposta)
 
     def boas_vindas(self):
         print("Seja bem-vindo!")
