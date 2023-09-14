@@ -7,7 +7,7 @@ class BotFalador(Bot):
         self.__comandos = comandos
         motor = pyttsx3.init()
         self.__motor = motor
-        self.__vozes = motor.getProperty('voices')
+        self.__motor.getProperty('voices')
         super().__init__(nome, comandos)
         
     @property
