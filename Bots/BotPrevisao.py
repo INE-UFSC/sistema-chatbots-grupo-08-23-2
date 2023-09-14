@@ -27,7 +27,7 @@ class BotPrevisao(Bot):
         print("Olá! Estou aqui para te dar a previsão do tempo da região que desejar")
             
     def boas_vindas(self):
-        print("Bem-vindx ao meu ChatBot Feliz! :D")
+        print("Bem vindo ao bot de previsão do tempo!")
 
     def despedida(self):
-        print("Adeus e tenha uma boa vida!")
+        print("Cuidado com o tempo!")
