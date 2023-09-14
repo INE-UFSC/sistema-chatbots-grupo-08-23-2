@@ -16,4 +16,3 @@ class BotZangado(Bot):
         
     def despedida(self):
         print("VAI LOGO, NAO AGUENTO MAIS FICAR AQUI")
-        
