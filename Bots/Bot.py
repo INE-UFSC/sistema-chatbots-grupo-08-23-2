@@ -4,9 +4,10 @@ from SistemaChatBot.Comando import Comando
 
 class Bot(ABC):
 
-    def __init__(self, nome, comandos):
+    def __init__(self, nome, comandos, img_path):
         self.nome = nome
         self.comandos = comandos
+        self.img_path = img_path
 
     @property
     def nome(self):
@@ -24,6 +25,10 @@ class Bot(ABC):
     def comandos(self,comandos):
         self.__comandos = comandos
 
+    @property
+    def img_path(self):
+        return self.img_path
+
     @abstractmethod
     def boas_vindas():
         pass
@@ -31,6 +36,7 @@ class Bot(ABC):
     @abstractmethod
     def despedida():
         pass
+
     
     def mostra_comandos(self):
         for i, comando in enumerate(self.comandos, start=1):

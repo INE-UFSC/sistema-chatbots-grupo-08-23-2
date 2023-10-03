@@ -7,7 +7,7 @@ class BotPrevisao(Bot):
     def __init__(self, nome):
         comandos = [Comando("Qual a previsão do tempo para hoje?", None),
                     Comando("Suas previsões são confiáveis?", "Mostro uma média das temperaturas diárias, apenas")]
-        super().__init__(nome, comandos)
+        super().__init__(nome, comandos,"imagens/img_previsao.png")
         self.__api_key = "73ea9c3f03a0479a384487c43d0de627"
         
     def descobre_previsao(self):
