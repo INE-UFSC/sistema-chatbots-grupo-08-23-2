@@ -11,13 +11,13 @@ class BotPrevisao(Bot):
         self.__api_key = "73ea9c3f03a0479a384487c43d0de627"
         
     def descobre_previsao(self):
-        cidade = input("Digite o nome da cidade: (0) ")
-        url = "https://api.openweathermap.org/data/2.5/weather?q=sao+paulo&appid={}&lang=pt_br".format(self.__api_key)
+        cidade = input("Digite o nome da cidade: ")
+        url = f'https://api.openweathermap.org/data/2.5/weather?q={cidade}&appid={self.__api_key}&lang=pt_br)'
         resposta = requests.get(url)
         if resposta.status_code == 200:
             dados = resposta.json()
             temperatura = dados["main"]["temp"] - 273.15
-            print(f"A temperatura media de hoje em {cidade.title()} é de {temperatura:.2f}ºC")
+            print(f"\nA temperatura media de hoje em {cidade.title()} é de {temperatura:.2f}ºC")
         else:
             print("Erro ao acessar a API")
         
