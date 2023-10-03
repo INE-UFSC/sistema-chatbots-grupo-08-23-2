@@ -1,6 +1,8 @@
-from view import view
+from view import View
 from model import Model
-from BotDAO import BotDAO
+from Persistencia.BotDAO import BotDAO
+import PySimpleGUI as sg
+
 
 class controller:
     def __init__(self):
@@ -14,6 +16,8 @@ class controller:
         while running:
             event, values = self.__tela.le_eventos()
 
-            if event == sg.WIN_CLOSED
-                self__bot_dao.dump()
+            if event == sg.WIN_CLOSED:
+                self.__bot_dao.dump()
                 running = False
+            
+            # elif event == ...
