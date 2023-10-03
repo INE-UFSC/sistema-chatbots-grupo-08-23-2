@@ -8,7 +8,7 @@ class controller:
         self.__bot_dao = BotDAO()
 
     def iniciar(self):
-        # self.__tela.tela_bot()
+        self.__tela.tela_bot()
 
         running = True
         while running:
@@ -16,4 +16,4 @@ class controller:
 
             if event == sg.WIN_CLOSED
                 self__bot_dao.dump()
-                
+                running = False
