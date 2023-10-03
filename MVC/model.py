@@ -11,4 +11,5 @@ class Model(object):
         self.__request_key = resquest_key
         self.__answer = None
 
-    
+    def give_response(self, request_key: int) -> str:
+        Comando(self.__request_key)
