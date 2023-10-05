@@ -2,7 +2,7 @@ import PySimpleGUI as sg
 from PIL import Image 
 import base64, io, math
 
-class view():
+class View():
     
     def __init__(self, controler) -> None:
         self.__controler = controler
