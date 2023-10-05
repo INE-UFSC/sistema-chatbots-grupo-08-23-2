@@ -1,9 +1,8 @@
 import json
 
-from ..Bots.BotFeliz import BotFeliz
-from ..Bots.BotNerdola import BotNerdola
-from ..Bots.BotFalante import BotFalante
-from ..Bots.BotZangado import BotZangado
+from Bots.BotFeliz import BotFeliz
+from Bots.BotNerdola import BotNerdola
+from Bots.BotZangado import BotZangado
 
 from SistemaChatBot.Comando import Comando
 
@@ -11,11 +10,10 @@ from SistemaChatBot.Comando import Comando
 class Model(object):
     # A __lista_bots vai ser inicializada como uma lista vazia
     # __bot também vai ser inicializado sem valor
-    def __init__(self, lista_bots: list) -> None:
+    def __init__(self) -> None: # Adicionar lista_bots como parametro depois
         self.__empresa = 'CrazyBots'
         self.__lista_bots = [
             BotFeliz('Felizinho'),
-            BotFalante('Falantinho'),
             BotNerdola('Nerdolinha'),
             BotZangado('Zangadinho')
             ]
@@ -74,5 +72,5 @@ class Model(object):
         self.__bot.executa_comando(self.__comando)
 
     def inicio(self) -> None:
-        self.boas_vindas()
-        self.menu()
+        print(self.boas_vindas())
+        print(self.menu())
