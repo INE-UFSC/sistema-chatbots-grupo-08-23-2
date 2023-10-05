@@ -26,17 +26,12 @@ class view():
         self.__container = [
             [sg.Text(f"Olá, esse é o sistema de chatbots de {self.__model.__empresa}!", expand_x=True, justification='center')],
             [sg.Text("Os chat bots disponíveis no momento são:", expand_x=True, justification='center')],
-            [sg.Button(
-                [sg.Text(f"{lista_bots[0].nome}", expand_x=True, justification='center')],
-                [sg.Image(data=self.import_imgs(lista_bots[0]))]
-                [sg.Text(f"{lista_bots[0].apresentacao}", expand_x=True, justification='center')],
-            )]
         ]
         for i in range(len(self.__model.lista_bots)[::self.__itens_por_linha]):
             collum = []
-            for
-            self.collum.append([sg.Button(
-                [sg.Text(f"{lista_bots[i].nome}", expand_x=True, justification='center')],
-                [sg.Image(data=self.import_imgs(lista_bots[i]))]
-                [sg.Text(f"{lista_bots[i].apresentacao}", expand_x=True, justification='center')],
-            )])
+            for j in range(self.__itens_por_linha):
+                self.collum.append([sg.Button(
+                    [sg.Text(f"{lista_bots[i].nome}", expand_x=True, justification='center')],
+                    [sg.Image(data=self.import_imgs(lista_bots[i]))]
+                    [sg.Text(f"{lista_bots[i].apresentacao}", expand_x=True, justification='center')],)])
+            self.__container.append(collum)

@@ -4,9 +4,9 @@ from SistemaChatBot.Comando import Comando
 class Bot(ABC):
 
     def __init__(self, nome, comandos, img_path):
-        self.nome = nome
-        self.comandos = comandos
-        self.img_path = img_path
+        self.__nome = nome
+        self.__comandos = comandos
+        self.__img_path = img_path
 
     @property
     def nome(self):
@@ -27,10 +27,6 @@ class Bot(ABC):
     @property
     def img_path(self):
         return self.img_path
-
-    @img_path.setter
-    def img_path(self, img_path: str) -> None:
-        self.img_path = img_path
 
     @abstractmethod
     def boas_vindas():
