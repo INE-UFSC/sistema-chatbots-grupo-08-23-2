@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-import random as r
 from SistemaChatBot.Comando import Comando
 
 class Bot(ABC):
@@ -29,18 +28,21 @@ class Bot(ABC):
     def img_path(self):
         return self.img_path
 
+    @img_path.setter
+    def img_path(self, img_path: str) -> None:
+        self.img_path = img_path
+
     @abstractmethod
     def boas_vindas():
         pass
-    
+
     @abstractmethod
     def despedida():
         pass
 
-    
     def mostra_comandos(self):
         for i, comando in enumerate(self.comandos, start=1):
             print(f"{i} - {comando.pergunta}")
-            
+
     def executa_comando(self, cmd):
         print(self.comandos[cmd].resposta)

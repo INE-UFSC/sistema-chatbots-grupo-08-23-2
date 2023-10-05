@@ -1,5 +1,4 @@
 from Bots.Bot import Bot
-from Bots.BotZangado import BotZangado
 
 class SistemaChatBot:
     def __init__(self, nomeEmpresa, lista_bots):
