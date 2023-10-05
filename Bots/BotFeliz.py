@@ -11,10 +11,10 @@ class BotFeliz(Bot):
         self.__nome = nome
         
     def apresentacao(self):
-        print("Olá, meu nome é {} da vida feliz.".format(self.__nome))
+        return "Olá, meu nome é {} da vida feliz.".format(self.__nome)
             
     def boas_vindas(self):
-        print("Bem-vindx ao meu ChatBot Feliz! :D")
+        return "Bem-vindx ao meu ChatBot Feliz! :D"
 
     def despedida(self):
-        print("Adeus e tenha uma boa vida!")
+        return "Adeus e tenha uma boa vida!"

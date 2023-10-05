@@ -17,21 +17,21 @@ class BotPrevisao(Bot):
         if resposta.status_code == 200:
             dados = resposta.json()
             temperatura = dados["main"]["temp"] - 273.15
-            print(f"\nA temperatura media de hoje em {cidade.title()} é de {temperatura:.2f}ºC")
+            return f"\nA temperatura media de hoje em {cidade.title()} é de {temperatura:.2f}ºC"
         else:
-            print("Erro ao acessar a API")
+            return "Erro ao acessar a API"
         
     def executa_comando(self, cmd):
         if self.comandos[cmd].resposta == None:
             self.descobre_previsao()
         else:
-            print(self.comandos[cmd].resposta)
+            return self.comandos[cmd].resposta
             
     def apresentacao(self):
-        print("Olá! Estou aqui para te dar a previsão do tempo da região que desejar")
+        return "Olá! Estou aqui para te dar a previsão do tempo da região que desejar"
             
     def boas_vindas(self):
-        print("Bem vindo ao bot de previsão do tempo!")
+        return "Bem vindo ao bot de previsão do tempo!"
 
     def despedida(self):
-        print("Cuidado com o tempo!")
+        return "Cuidado com o tempo!"

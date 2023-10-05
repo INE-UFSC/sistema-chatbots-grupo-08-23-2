@@ -10,10 +10,10 @@ class BotNerdola(Bot):
         self.__nome = nome
 
     def apresentacao(self):
-        print(f'Olá, eu sou o {self.__nome} e eu sei matemática!')
+        return f'Olá, eu sou o {self.__nome} e eu sei matemática!'
 
     def boas_vindas(self):
-        print(f'Bem-vindo viajante, em que posso ajudá-lo?')
+        return f'Bem-vindo viajante, em que posso ajudá-lo?'
 
     def despedida(self):
-        print('Adeus amigo, foi um prazer conversar com você. Por favor volte a falar comigo novamente, eu sou muito solitário...')
+        return 'Adeus amigo, foi um prazer conversar com você. Por favor volte a falar comigo novamente, eu sou muito solitário...'

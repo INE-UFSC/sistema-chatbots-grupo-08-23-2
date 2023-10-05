@@ -8,10 +8,10 @@ class BotZangado(Bot):
         super().__init__(nome,self.__comandos, "imagens/angry.jpg")
 
     def apresentacao(self):
-        print("OLÁ, EU SOU O BOT ZANGADO, PQ VOCÊ ESTÁ ME INCOMODANDO?")
+        return "OLÁ, EU SOU O BOT ZANGADO, PQ VOCÊ ESTÁ ME INCOMODANDO?"
         
     def boas_vindas(self):
-        print("SEJA MAL VINDO AO CHATBOT ZANGADO!")
+        return "SEJA MAL VINDO AO CHATBOT ZANGADO!"
         
     def despedida(self):
-        print("VAI LOGO, NAO AGUENTO MAIS FICAR AQUI")
+        return "VAI LOGO, NAO AGUENTO MAIS FICAR AQUI"
