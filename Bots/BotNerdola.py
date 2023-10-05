@@ -6,7 +6,7 @@ class BotNerdola(Bot):
         self.__comandos = [Comando("Bom dia!", "Bom dia, como vai você?"),
                            Comando("Qual o seu nome?", f"Meu nome é {nome}"),
                            Comando("Qual sua idade?", "Minha idade é : 2 * 4 + 10 + cos(0)")]
-        super().__init__(nome, self.__comandos,  "imagens/img_nerdola.png")
+        super().__init__(nome, self.__comandos,  "imagens/nerd.png")
         self.__nome = nome
 
     def apresentacao(self):
