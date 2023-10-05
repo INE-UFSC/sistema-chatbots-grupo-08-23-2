@@ -42,7 +42,7 @@ class Bot(ABC):
 
     def mostra_comandos(self):
         for i, comando in enumerate(self.comandos, start=1):
-            print(f"{i} - {comando.pergunta}")
+            return f"{i} - {comando.pergunta}"
 
     def executa_comando(self, cmd):
-        print(self.comandos[cmd].resposta)
+        return self.comandos[cmd].resposta

@@ -23,7 +23,7 @@ class BotFalante(Bot):
         self.__motor.stop()
         
     def apresentacao(self):
-        print("Olá, eu sou um bot falante gringo. Eu repito o que você quiser.")        
+        return "Olá, eu sou um bot falante gringo. Eu repito o que você quiser."       
             
     def executa_comando(self, comando):
         print("Eu estou falando, não vou repetir de novo!")
@@ -31,7 +31,7 @@ class BotFalante(Bot):
         self.run_voice(comando)
 
     def boas_vindas(self):
-        print("Seja bem-vindo!")
+        return "Seja bem-vindo!"
 
     def despedida(self):
         self.run_voice("Adeus e tenha uma boa vida!")
