@@ -26,7 +26,11 @@ class Bot(ABC):
 
     @property
     def img_path(self):
-        return self.img_path
+        return self.__img_path
+    
+    @img_path.setter
+    def img_path(self,imgpath):
+        self.__img_path = imgpath
 
     @abstractmethod
     def boas_vindas():

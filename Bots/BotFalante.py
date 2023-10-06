@@ -5,7 +5,7 @@ import pyttsx3
 class BotFalante(Bot):
     def __init__(self, nome):
         self.__comandos = [Comando("Repitindo pronúncias", None)]
-        super().__init__(nome,self.__comandos, "imagens/talk.jpg")
+        super().__init__(nome,self.__comandos, "imagens/bot_talk.png")
         motor = pyttsx3.init()
         self.__motor = motor
         self.__motor.getProperty('voices')
