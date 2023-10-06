@@ -18,13 +18,13 @@ def talk_with_chatbot(bot_selected):
             
         for i, val in enumerate(bot_selected.comandos):
             if (select_int_comm != -1 and select_int_comm == i+1) or selected == val.pergunta:
-                return val
+                return i
         return None
     
     def on_submit(event=None):
         user_input = input_field.get()
         output_field.config(state='normal')
-        output_field.insert('end', '\nUser: ' + user_input + '\n', 'red')
+        output_field.insert('end', '\nEu: ' + user_input + '\n', 'red')
         com_bot = selected_command_bot(user_input)
         
         if user_input == str((len(bot_selected.comandos) + 1)) or user_input == "Não quero mais conversar!":
@@ -32,7 +32,7 @@ def talk_with_chatbot(bot_selected):
         elif com_bot == None:
             output_field.insert('end', 'Desculpe, mas não entendi o que disse.\n', 'blue')
         else:
-            output_field.insert('end', com_bot.resposta, 'blue')
+            output_field.insert('end', bot_selected.executa_comando(com_bot), 'blue')
             
         input_field.delete(0, 'end')
         output_field.config(state='disabled')
@@ -66,7 +66,7 @@ def talk_with_chatbot(bot_selected):
     input_frame = tk.Frame(root)
     input_frame.pack(side='bottom', fill='x')
 
-    input_label = tk.Label(input_frame, text="User:")
+    input_label = tk.Label(input_frame, text="Digite:")
     input_label.pack(side='left')
 
     input_field = tk.Entry(input_frame, width=150)
