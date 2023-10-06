@@ -1,6 +1,6 @@
 class Comando:
     
-    def __init__(self, pergunta, resposta) -> None:
+    def __init__(self, pergunta, resposta):
         self.__pergunta = pergunta
         self.__resposta = resposta
         

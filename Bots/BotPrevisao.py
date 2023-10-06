@@ -1,5 +1,5 @@
 from Bots.Bot import Bot
-from SistemaChatBot.Comando import Comando
+from Persistencia.Comando import Comando
 import requests
 
 class BotPrevisao(Bot):

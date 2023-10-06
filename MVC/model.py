@@ -4,7 +4,7 @@ from Bots.BotFeliz import BotFeliz
 from Bots.BotNerdola import BotNerdola
 from Bots.BotZangado import BotZangado
 
-from SistemaChatBot.Comando import Comando
+from Persistencia.Comando import Comando
 
 
 class Model(object):

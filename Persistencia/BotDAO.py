@@ -1,6 +1,5 @@
-from Bots.Bot import Bot
 from DAO import DAO
-from SistemaChatBot.Comando import Comando
+from Comando import Comando
 
 class BotDAO(DAO):
     def __init__(self):

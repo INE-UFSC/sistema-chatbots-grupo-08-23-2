@@ -1,5 +1,5 @@
 from Bots.Bot import Bot
-from SistemaChatBot.Comando import Comando
+from Persistencia.Comando import Comando
 
 class BotFeliz(Bot):
     def __init__(self, nome):
