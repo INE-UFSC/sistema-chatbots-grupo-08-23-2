@@ -1,4 +1,4 @@
-from SistemaChatBot.Comando import Comando
+from Persistencia.Comando import Comando
 from Bots.Bot import Bot
 import pyttsx3
 

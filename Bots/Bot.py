@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from SistemaChatBot.Comando import Comando
+from Persistencia.Comando import Comando
 
 class Bot(ABC):
 
