@@ -1,5 +1,5 @@
+import json
 from abc import ABC, abstractmethod
-import pickle
 
 
 class DAO(ABC):
@@ -10,37 +10,39 @@ class DAO(ABC):
             self.load()
         except FileNotFoundError:
             self.dump()
-            
+
     @property
     def cache(self):
         return self.__cache
-    
+
     @cache.setter
     def cache(self, cache):
         self.__cache = cache
 
     def dump(self):
-        pickle.dump(self.__cache, open(self.__datasource, 'wb'))
+        with open(self.__datasource, 'w') as file:
+            json.dump(self.__cache, file)
 
     def load(self):
-        self.__cache = pickle.load(open(self.__datasource, 'rb'))
+        with open(self.__datasource, 'r') as file:
+            self.__cache = json.load(file)
 
     def add(self, key, obj):
-        self.__cache[key] == obj
+        self.__cache[key] = obj
         self.dump()
-    
+
     def get(self, key):
         try:
             return self.__cache[key]
         except KeyError:
             pass
-    
+
     def remove(self, key):
         try:
-            self.__cache.pop(key)
+            del self.__cache[key]
             self.dump()
         except KeyError:
             pass
-    
+
     def get_all(self):
-        return self.__cache.values()
+        return list(self.__cache.values())
