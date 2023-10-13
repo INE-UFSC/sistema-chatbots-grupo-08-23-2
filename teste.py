@@ -100,7 +100,7 @@ def talk_with_chatbot(bot_selected):
 def select_bot(items, selected):
     for ev in list(map(lambda x: x.nome, items)):
         if ev == selected:
-            window[ev].update(button_color="sea green")
+            window[ev].update(button_color="light steel blue")
         else:
             window[ev].update(button_color="azure4")
             
@@ -120,17 +120,18 @@ def get_bot(items, bot):
 
 items = [BotZangado("Zangado"), BotNerdola("Nerdola"), BotFeliz("Feliz"), BotFalante("Falante"), BotPrevisao("Previsão")]
 
-column1 = [[sg.Button(item.nome, expand_x=True, key=item.nome, size=(25), button_color=("sea green" if item.nome == items[0].nome else "azure4"))] for item in items]
+column1 = [[sg.Button(item.nome, expand_x=True, key=item.nome, size=(25), button_color=("light steel blue" if item.nome == items[0].nome else "azure4"), font=("Helvetica", 10, "bold"))] for item in items]
 
 column2 = [[]]
 for i, item in enumerate(items):
     column = []
-    column.append([sg.Text(item.nome, justification='center', font=("Helvetica", 18, "bold"))])
-    column.append([sg.Image(item.img_path)])
-    column.append([sg.Text(item.apresentacao())])
+    column.append([sg.Text(item.nome, expand_x=True, justification='center', font=("Helvetica", 18, "bold"))])
+    column.append([sg.Image(item.img_path, expand_x=True)])
+    column.append([sg.Text(item.apresentacao(), expand_x=True, justification='center', font=("Helvetica", 12, "bold"))])
     column2[0].append(sg.Column(column, visible=(i==0), key=("Page", item.nome)))
 
-column3 = [[sg.Button("Conversar agora!", key=("_SELECT_BOT_"))], [sg.Button("Sair!", button_color="red", key="-SAIR-")]]
+column3 = [[sg.Button("Conversar agora!", key=("_SELECT_BOT_"), font=("Helvetica", 10, "bold") ), 
+            sg.Button("Sair!", button_color="orange red", key="-SAIR-", font=("Helvetica", 10, "bold"))]]
 selected_bot = items[0]
 
 columnChatbot = [
@@ -144,10 +145,10 @@ columnChatbot = [
 
 columnInput = []
 
-sg.theme('DarkBlue')
+sg.theme('DarkBlue3')
 layout = [[sg.Column(column1, justification="center", key="_COL01_"), 
            sg.VerticalSeparator(), 
-           sg.Column(column2, vertical_alignment='top', justification="center", key="-COL02-"), 
+           sg.Column(column2, vertical_alignment='top', justification="center", key="-COL02-", expand_x=True), 
            sg.Column(columnChatbot, vertical_alignment='top', justification="center", background_color="LightSteelBlue4", key=("Page", "-CHATBOT-"), visible=False),
         ],
           [sg.Column(column3, justification="right")]]

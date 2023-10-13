@@ -1,23 +1,13 @@
-import json
-
-from Bots.BotFeliz import BotFeliz
+from Bots.Bot import Bot
 from Bots.BotNerdola import BotNerdola
-from Bots.BotZangado import BotZangado
-
-from Persistencia.Comando import Comando
 
 
 class Model(object):
-    # A __lista_bots vai ser inicializada como uma lista vazia
     # __bot também vai ser inicializado sem valor
-    def __init__(self) -> None: # Adicionar lista_bots como parametro depois
-        self.__empresa = 'CrazyBots'
-        self.__lista_bots = [
-            BotFeliz('Felizinho'),
-            BotNerdola('Nerdolinha'),
-            BotZangado('Zangadinho')
-            ]
-        self.__bot = BotNerdola('Nerdolasso') #self.__lista_bots[2]
+    def __init__(self, nome_empresa: str, lista_bots: list[Bot]) -> None:
+        self.__empresa = nome_empresa
+        self.__lista_bots = lista_bots
+        self.__bot = BotNerdola('Nerdolasso')
         self.__comando = None
 
     # Função para dar boas-vindas ao usuário
@@ -38,8 +28,15 @@ class Model(object):
         while True:
             try:
                 opcao = int(input('Digite o número do chatbot desejado: '))
+
+                if opcao == -1:
+                    break
+
                 if 1 <= opcao <= len(self.__lista_bots):
                     self.__bot = self.__lista_bots[opcao-1]
+                    print(self.__bot.apresentacao())
+                    print(self.__bot.comandos)
+                    self.ler_comando()
                 else:
                     print('Bot inválido.')
             except ValueError:
@@ -71,6 +68,5 @@ class Model(object):
     def executar_comando(self):
         self.__bot.executa_comando(self.__comando)
 
-    def inicio(self) -> None:
-        print(self.boas_vindas())
-        print(self.menu())
+    def inicio(self) -> tuple:
+        return self.boas_vindas(), self.menu(), self.escolher_bot()

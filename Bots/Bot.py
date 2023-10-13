@@ -37,6 +37,10 @@ class Bot(ABC):
         pass
 
     @abstractmethod
+    def apresentacao(self) -> str:
+        pass
+
+    @abstractmethod
     def despedida():
         pass
 
