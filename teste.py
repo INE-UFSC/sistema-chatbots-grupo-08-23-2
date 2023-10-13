@@ -26,13 +26,30 @@ def talk_with_chatbot(bot_selected):
         output_field.config(state='normal')
         output_field.insert('end', '\nEu: ' + user_input + '\n', 'red')
         com_bot = selected_command_bot(user_input)
+        is_subcom = isinstance(bot_selected.comandos[com_bot].resposta, list)
+        print(f"com_bot {com_bot}")
         
         if user_input == str((len(bot_selected.comandos) + 1)) or user_input == "Não quero mais conversar!":
             output_field.insert('end', bot_selected.despedida(), 'blue')
         elif com_bot == None:
             output_field.insert('end', 'Desculpe, mas não entendi o que disse.\n', 'blue')
         else:
-            output_field.insert('end', bot_selected.executa_comando(com_bot), 'blue')
+            if is_subcom:
+                response = "0"
+                is_input = True
+                subcomandos = bot_selected.comandos[com_bot].resposta
+                while response != "-1":
+                    for subcomando in subcomandos:
+                        # exec = bot_selected.executa_subcomandos(subcomando, is_input)
+                        resp_sub = subcomando.res
+                        if is_input:
+                            output_field.insert('end', subcomando.pergunta, 'blue')
+                            response = input_field.get()
+                        else:
+                            output_field.insert('end', subcomando.resposta(response), 'blue')
+                        is_input = not is_input
+            else:
+                output_field.insert('end', bot_selected.executa_comando(com_bot), 'blue')
             
         input_field.delete(0, 'end')
         output_field.config(state='disabled')
