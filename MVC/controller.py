@@ -1,3 +1,8 @@
+from MVC.model import Model
+from MVC.view import View
+from MVC.model import Model
+
+
 class Controller: 
     def __init__(self, model, view):
         self.__model = model
@@ -26,6 +31,7 @@ class Controller:
 
     def set_comando_selecionado(self, val):
         self.model.comando_selecionado = val
+        self.model.salvar_dados()
         
     def get_bot_by_nome(self, nome):
         return self.model.get_bot_by_nome(nome)

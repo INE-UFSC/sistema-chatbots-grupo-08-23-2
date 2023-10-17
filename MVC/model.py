@@ -38,9 +38,11 @@ class Model:
     def get_bot_by_nome(self, nome):
         for bot in self.bots:
             if bot.nome == nome:
-                self.__DAO.dump(self.__bot_selecionado, self.__comando_selecionado)
                 return bot
         return None
     
-    def return_historic(self):
-        return self.__DAO.get_all
+    def salvar_dados(self):
+        self.__DAO.dump(self.__bot_selecionado, self.comando_selecionado)
+
+    def carregar_dados(self):
+        return self.__DAO.load()
