@@ -1,6 +1,5 @@
 import PySimpleGUI as sg
 import tkinter as tk
-import time 
 
 class View():
     def __init__(self, controller) -> None:
@@ -177,23 +176,23 @@ class View():
 
         output_label = tk.Label(output_frame, text="Chat:")
         output_label.pack(side='left')
-
         output_field = tk.Text(output_frame, height="10")
+        output_field.config(foreground="#283B5B")
         output_field.pack(side='left', fill='both', expand=True)
         output_field.config(state='disabled')
-        output_field.tag_config('blue', foreground='blue')
+        output_field.tag_config('blue')
         output_field.tag_config('red', foreground='red')
-        output_field.config(font=("Futura", 16))
+        output_field.config(font=("Helvetica", 16))
         
         output_field.config(state='normal')
-        output_field.insert('end', bot_selected.boas_vindas(), 'blue')
-        output_field.insert('end', "\nSelecione um comando para conversar comigo!", 'blue')
+        output_field.insert('end', bot_selected.boas_vindas())
+        output_field.insert('end', "\nSelecione um comando para conversar comigo!")
         comandos_str = ''
         for i, val in enumerate(bot_selected.comandos):
             comandos_str += f"\n---> {i+1}: {val.pergunta}"
         
-        output_field.insert('end', comandos_str, 'blue')
-        output_field.insert('end', f"\n---> {len(bot_selected.comandos) + 1}: Sair!", 'blue')
+        output_field.insert('end', comandos_str)
+        output_field.insert('end', f"\n---> {len(bot_selected.comandos) + 1}: Sair!")
 
         input_frame = tk.Frame(root)
         input_frame.pack(side='bottom', fill='x')
