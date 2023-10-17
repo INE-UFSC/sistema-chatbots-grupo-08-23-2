@@ -1,3 +1,5 @@
+from Persistencia.BotDAO import BotDAO
+
 class Model:
     def __init__(self, nome_empresa, bots) -> None:
         self.__bots = bots
@@ -7,7 +9,8 @@ class Model:
             self.__comando_selecionado = self.__bot_selecionado.comandos[0]
         else:
             self.__comando_selecionado = None
-        
+        self.__DAO = BotDAO()
+
     @property
     def bots(self):
         return self.__bots
@@ -35,5 +38,9 @@ class Model:
     def get_bot_by_nome(self, nome):
         for bot in self.bots:
             if bot.nome == nome:
+                self.__DAO.dump(self.__bot_selecionado, self.__comando_selecionado)
                 return bot
         return None
+    
+    def return_historic(self):
+        return self.__DAO.get_all
