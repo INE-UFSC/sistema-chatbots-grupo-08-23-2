@@ -6,7 +6,6 @@ from Bots.BotNerdola import BotNerdola
 from Bots.BotFeliz import BotFeliz
 from Bots.BotPrevisao import BotPrevisao
 
-
 def talk_with_chatbot(bot_selected):
     def selected_command_bot(selected): 
         select_int_comm = -1
@@ -21,33 +20,54 @@ def talk_with_chatbot(bot_selected):
                 return i
         return None
     
+    def on_submit_subcommand(event=None, command=None):
+        subcomandos = bot_selected.comandos[0].resposta
+        subcomando = subcomandos[0]
+        
+        user_input = input_field.get()
+        
+        if user_input == '1' or user_input == "Sair dessa opção":
+            output_field.config(state='normal')
+            output_field.insert('end', '\nEu: ' + "Sair do subcomando" + '\n', 'red')
+            output_field.insert('end', "\nVocê saiu do subchat, digite a opção de um comando do menu principal", 'blue')
+            submit_button.config(command=on_submit)
+        else:
+            output_field.config(state='normal')
+            output_field.insert('end', '\nEu: ' + user_input + '\n', 'red')
+            
+            response = ''
+            if user_input != '':
+                response = subcomando.resposta(user_input)
+            output_field.insert('end', response, 'black')
+            output_field.insert('end', "\nDigite novamente ou:", 'blue')
+            output_field.insert('end', "\n1- Sair dessa opção", 'blue')
+            
+        input_field.delete(0, 'end')
+        output_field.config(state='disabled')
+
     def on_submit(event=None):
         user_input = input_field.get()
         output_field.config(state='normal')
         output_field.insert('end', '\nEu: ' + user_input + '\n', 'red')
-        com_bot = selected_command_bot(user_input)
-        is_subcom = isinstance(bot_selected.comandos[com_bot].resposta, list)
-        print(f"com_bot {com_bot}")
         
+        com_bot = selected_command_bot(user_input)
+        
+        if com_bot != None:
+            is_subcom = isinstance(bot_selected.comandos[com_bot].resposta, list)
+        else:
+            is_subcom = False
+            
         if user_input == str((len(bot_selected.comandos) + 1)) or user_input == "Não quero mais conversar!":
             output_field.insert('end', bot_selected.despedida(), 'blue')
         elif com_bot == None:
             output_field.insert('end', 'Desculpe, mas não entendi o que disse.\n', 'blue')
         else:
             if is_subcom:
-                response = "0"
-                is_input = True
                 subcomandos = bot_selected.comandos[com_bot].resposta
-                while response != "-1":
-                    for subcomando in subcomandos:
-                        # exec = bot_selected.executa_subcomandos(subcomando, is_input)
-                        resp_sub = subcomando.res
-                        if is_input:
-                            output_field.insert('end', subcomando.pergunta, 'blue')
-                            response = input_field.get()
-                        else:
-                            output_field.insert('end', subcomando.resposta(response), 'blue')
-                        is_input = not is_input
+                subcomando = subcomandos[0]
+                
+                output_field.insert('end', subcomando.pergunta, 'blue')
+                submit_button.config(command=on_submit_subcommand)
             else:
                 output_field.insert('end', bot_selected.executa_comando(com_bot), 'blue')
             
@@ -88,7 +108,6 @@ def talk_with_chatbot(bot_selected):
 
     input_field = tk.Entry(input_frame, width=150)
     input_field.pack(side='left')
-    input_field.bind("<Return>", on_submit)
 
     submit_button = tk.Button(input_frame, text="Submit", command=on_submit)
     close_button = tk.Button(input_frame, text="Sair do Chat", command=root.destroy, background="red")
@@ -161,7 +180,6 @@ while True:
     event, values = window.read()
         
     if event == '_SELECT_BOT_':
-        print("selecionar")
         talk_with_chatbot(selected_bot)
     if event == sg.WIN_CLOSED or event == "-SAIR-":
         break
