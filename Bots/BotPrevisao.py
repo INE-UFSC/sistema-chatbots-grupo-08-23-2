@@ -7,8 +7,8 @@ class BotPrevisao(Bot):
     def __init__(self, nome):
         # comandos = [Comando("Qual a previsão do tempo para hoje?", [Comando("Digite o nome da cidade:", self.descobre_previsao_2), Comando("Sair", "exit")]),
         #             Comando("Suas previsões são confiáveis?", "Mostro uma média das temperaturas diárias, apenas")]
-        comandos = [Comando("Qual a previsão do tempo para hoje?", [Comando("Digite o nome da cidade:", self.descobre_previsao_2)]),
-                    Comando("Suas previsões são confiáveis?", "Mostro uma média das temperaturas diárias, apenas")]
+        comandos = [Comando("Qual é a temperatura atual?", [Comando("Digite o nome da cidade:", self.descobre_previsao_2)]),
+                    Comando("Suas informações são confiáveis?", "Te dou as informações que a API me fornece")]
         super().__init__(nome, comandos,"imagens/bot_weather.png")
         self.__api_key = "73ea9c3f03a0479a384487c43d0de627"
         
@@ -23,7 +23,7 @@ class BotPrevisao(Bot):
         if resposta.status_code == 200:
             dados = resposta.json()
             temperatura = dados["main"]["temp"] - 273.15
-            return f"\nA temperatura media de hoje em {cidade.title()} é de {temperatura:.2f}ºC"
+            return f"\nA temperatura atual de agora em {cidade.title()} é de {temperatura:.2f}ºC"
         else:
             return "Erro ao acessar a API"
         
@@ -34,7 +34,7 @@ class BotPrevisao(Bot):
         if resposta.status_code == 200:
             dados = resposta.json()
             temperatura = dados["main"]["temp"] - 273.15
-            return f"\nA temperatura media de hoje em {cidade.title()} é de {temperatura:.2f}ºC"
+            return f"\nA temperatura atual de agora em {cidade.title()} é de {temperatura:.2f}ºC"
         else:
             return "Erro ao acessar a API"
         
@@ -45,7 +45,7 @@ class BotPrevisao(Bot):
             return self.comandos[cmd].resposta
             
     def apresentacao(self):
-        return "Olá! Estou aqui para te dar a previsão do tempo da região que desejar"
+        return "Olá! Estou aqui para te dar a temperatura da região que desejar"
             
     def boas_vindas(self):
         return "Bem vindo ao bot de previsão do tempo!"
