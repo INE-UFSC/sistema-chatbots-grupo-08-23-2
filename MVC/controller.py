@@ -1,22 +1,31 @@
-from view import View
-from Persistencia.BotDAO import BotDAO
-import PySimpleGUI as sg
+class Controller: 
+    def __init__(self, model, view):
+        self.__model = model
+        self.__view = view
+        
+    @property
+    def model(self):
+        return self.__model
+    
+    @property
+    def view(self):
+        return self.__view
+    
+    @view.setter
+    def view(self, new_view):
+        self.__view = new_view
+    
+    def bots(self):
+        return self.model.bots
+    
+    def bot_selecionado(self):
+        return self.model.bot_selecionado
+    
+    def comando_selecionado(self):
+        return self.model.comando_selecionado
 
-
-class Controller:
-    def __init__(self):
-        self.__tela = View(self)
-        self.__bot_dao = BotDAO()
-
-    def iniciar(self):
-        self.__tela.tela_bot()
-
-        running = True
-        while running:
-            event, values = self.__tela.le_eventos()
-
-            if event == sg.WIN_CLOSED:
-                self.__bot_dao.dump()
-                running = False
-            
-            # elif event == ...
+    def set_comando_selecionado(self, val):
+        self.model.comando_selecionado = val
+        
+    def get_bot_by_nome(self, nome):
+        return self.model.get_bot_by_nome(nome)

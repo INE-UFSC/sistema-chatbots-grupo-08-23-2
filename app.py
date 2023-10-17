@@ -1,15 +1,28 @@
-#encoding: utf-8
-from SistemaChatBot import SistemaChatBot as scb
-from Bots.BotZangado import BotZangado
-from Bots.BotFeliz import BotFeliz
-from Bots.BotNerdola import BotNerdola
-from Bots.BotFalante import BotFalante
-from Bots.BotPrevisao import BotPrevisao
+import PySimpleGUI as sg
+import tkinter as tk
+from MVC.model import Model
+from MVC.view import View
 from MVC.controller import Controller
 
-###construa a lista de bots disponíveis aqui
-lista_bots = [BotZangado("Zangado"), BotNerdola("Nerdola"), BotFeliz("Feliz"), BotFalante("Falante"), BotPrevisao("Previsão")]
+from Bots.BotFalante import BotFalante
+from Bots.BotZangado import BotZangado
+from Bots.BotNerdola import BotNerdola
+from Bots.BotFeliz import BotFeliz
+from Bots.BotPrevisao import BotPrevisao
 
-#sys = scb.SistemaChatBot("CrazyBots",lista_bots)
-sys = Controller()
-sys.inicio()
+class MainApplication():
+    def __init__(self):
+        bots = [BotZangado("Zangado"), BotNerdola("Nerdola"), BotFeliz("Feliz"), BotFalante("Falante"), BotPrevisao("Previsão")]
+        model = Model("Empresa de Bots", bots)
+        
+        controller = Controller(model=model, view=None)
+        view = View(controller)
+        controller.view = view
+        
+        self.view = view
+        
+    def init(self):
+        self.view.init()
+       
+mainApp = MainApplication()
+mainApp.init()

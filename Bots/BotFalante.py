@@ -13,7 +13,7 @@ class BotFalante(Bot):
         self.__motor.getProperty('voices')
         
     def config_init(self):   
-        self.__motor.setProperty('rate', 125)  
+        self.__motor.setProperty('rate', 150)  
         self.__motor.setProperty('volume',1.0)     
         
         vozes = self.__motor.getProperty('voices')
@@ -29,6 +29,7 @@ class BotFalante(Bot):
     
     def fala(self, frase):
         self.run_voice(frase)
+        return ""
             
     def executa_comando(self, comando):
         print("Eu estou falando, não vou repetir de novo!")
@@ -39,4 +40,5 @@ class BotFalante(Bot):
         return "Seja bem-vindo!"
 
     def despedida(self):
-        self.run_voice("Adeus e tenha uma boa vida!")
+        self.run_voice("Bye Bye")
+        return ""
