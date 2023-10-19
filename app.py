@@ -3,17 +3,19 @@ import tkinter as tk
 from MVC.model import Model
 from MVC.view import View
 from MVC.controller import Controller
+from Persistencia.BotDAO import BotDAO
 
-from Bots.BotFalante import BotFalante
+# from Bots.BotFalante import BotFalante
 from Bots.BotZangado import BotZangado
 from Bots.BotNerdola import BotNerdola
 from Bots.BotFeliz import BotFeliz
-from Bots.BotPrevisao import BotPrevisao
+# from Bots.BotPrevisao import BotPrevisao
 
 class MainApplication():
     def __init__(self):
-        bots = [BotZangado("Zangado"), BotNerdola("Nerdola"), BotFeliz("Feliz"), BotFalante("Falante"), BotPrevisao("Previsão")]
-        model = Model("Empresa de Bots", bots)
+        bots = [BotZangado("Zangado"), BotNerdola("Nerdola"), BotFeliz("Feliz")]#, BotFalante("Falante"), BotPrevisao("Previsão")]
+        botdao = BotDAO()
+        model = Model("Empresa de Bots", bots, botdao)
         
         controller = Controller(model=model, view=None)
         view = View(controller)

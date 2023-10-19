@@ -1,7 +1,7 @@
 from Persistencia.BotDAO import BotDAO
 
 class Model:
-    def __init__(self, nome_empresa, bots) -> None:
+    def __init__(self, nome_empresa, bots, bot_dao=BotDAO) -> None:
         self.__bots = bots
         self.__nome_empresa = nome_empresa
         self.__bot_selecionado = bots[0] if len(bots) > 0 else None
@@ -9,8 +9,9 @@ class Model:
             self.__comando_selecionado = self.__bot_selecionado.comandos[0]
         else:
             self.__comando_selecionado = None
-        self.__DAO = BotDAO()
-
+        self.__bot_dao = bot_dao
+        self.__bot_dao.add("Nome da empresa" ,self.__nome_empresa)
+        
     @property
     def bots(self):
         return self.__bots
@@ -40,9 +41,3 @@ class Model:
             if bot.nome == nome:
                 return bot
         return None
-    
-    def salvar_dados(self):
-        self.__DAO.dump(self.__bot_selecionado, self.comando_selecionado)
-
-    def carregar_dados(self):
-        return self.__DAO.load()
