@@ -11,6 +11,7 @@ from Bots.BotNerdola import BotNerdola
 from Bots.BotFeliz import BotFeliz
 from Bots.BotPrevisao import BotPrevisao
 
+
 class MainApplication():
     def __init__(self):
         bots = [BotZangado("Zangado"), BotNerdola("Nerdola"), BotFeliz("Feliz"), BotFalante("Falante"), BotPrevisao("Previsão")]
